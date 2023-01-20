@@ -34,7 +34,6 @@ const errorHandler = (err, req, res, next) => {
   const message =
     error.message || 'Unexpected error occurred! Internal server error!';
 
-  console.log('hey ther');
   return res.status(status).json({
     success: false,
     status,
