@@ -26,7 +26,7 @@ server.use(baseApiPathPrefix, coachRoutes);
 /* CUSTOM ERROR HANDLER */
 server.use(errorHandler);
 
-const PORT = process.env.port || 8000;
+const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => {
   console.log(`SERVER IS LISTENING AT PORT ${PORT}...`);
 });
