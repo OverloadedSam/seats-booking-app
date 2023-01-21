@@ -1,4 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import styled from '@emotion/styled';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -13,16 +16,26 @@ import SeatIcon from '@mui/icons-material/AirlineSeatReclineNormal';
 import ArrowIcon from '@mui/icons-material/KeyboardDoubleArrowRightRounded';
 import Alert from '../common/Alert';
 import Loader from '../common/Loader';
-import { useGetTrainCoachDetailsQuery } from '../state/features/apiSlice';
+import {
+  useGetTrainCoachDetailsQuery,
+  useReserveSeatsMutation,
+} from '../state/features/apiSlice';
+import { selectLoggedInUser } from '../state/features/authSlice';
 
 const BookSeats = () => {
   const [seats, setSeats] = useState(1);
+  const userName = useSelector(selectLoggedInUser);
+  const navigate = useNavigate();
 
   /* ASSUMPTION: Hardcoding coach id as it is fairly simple app. */
   const coachId = '63ca7bf0908544cdd2ed78df';
   const { isLoading, data, error } = useGetTrainCoachDetailsQuery(coachId);
+  const [
+    reserveSeats,
+    { isLoading: isBooking, isSuccess: isBooked, error: bookingError },
+  ] = useReserveSeatsMutation();
 
-  // Marks (dots) for slider.
+  // Make marks (dots) for slider.
   const marks = useMemo(() => {
     if (data) {
       const { seatsPerRow } = data.train.coach;
@@ -32,6 +45,23 @@ const BookSeats = () => {
       return dots;
     } else return [{ value: 0, label: '0 Seat' }];
   }, [data]);
+
+  useEffect(() => {
+    if (isBooked) {
+      toast.success(`Your ${seats} seat(s) has been booked!`);
+      navigate('/reservation-details');
+    }
+
+    if (bookingError) {
+      const message = bookingError.error || bookingError.data.message;
+      toast.error(message);
+    }
+  }, [isBooked, bookingError]);
+
+  const bookSeats = () => {
+    console.log('Booking seats...');
+    reserveSeats({ numberOfSeats: seats, userName, coachId });
+  };
 
   return (
     <Container>
@@ -137,12 +167,13 @@ const BookSeats = () => {
             </Stack>
             <Button
               fullWidth
-              disabled={!seats}
+              onClick={bookSeats}
+              disabled={!seats || isBooking}
               variant='contained'
               color='secondary'
               endIcon={<ArrowIcon />}
             >
-              Book Seats
+              {isBooking ? 'Booking Seats...' : 'Book Seats'}
             </Button>
           </>
         ) : isLoading ? (
