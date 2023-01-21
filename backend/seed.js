@@ -20,9 +20,10 @@ const dataCoaches = [
     _id: '63ca7bf0908544cdd2ed78df',
     train: '63ca42a4437ba5442f6680aa',
     name: 'E1',
-    totalSeats: 9,
-    seatsPerRow: 3,
-    availableSeats: 9,
+    totalSeats: 80,
+    rows: 12,
+    seatsPerRow: 7,
+    availableSeats: 80,
     seats: [
       [
         {
@@ -37,8 +38,310 @@ const dataCoaches = [
           isReserved: false,
           userName: null,
         },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
       ],
       [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+      ],
+      [
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
+        {
+          isReserved: false,
+          userName: null,
+        },
         {
           isReserved: false,
           userName: null,
@@ -67,7 +370,6 @@ const dataCoaches = [
         },
       ],
     ],
-    rows: 3,
   },
 ];
 
