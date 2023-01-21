@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Train = require('../models/train');
 const Coach = require('../models/coach');
 const asyncHandler = require('../middlewares/asyncHandler');
@@ -37,6 +38,32 @@ module.exports.createCoach = asyncHandler(async (req, res, next) => {
     success: true,
     status: 201,
     ...coach._doc,
+  });
+});
+
+/**
+ * @DESC     Gets coach details from DB and returns it to the client.
+ * @ROUTE    GET /api/coach/:id
+ * @ACCESS   Public
+ * @PARAMS   {string/MongoDbId} id.query.optional - The coach's associated train id.
+ * @RETURNS  {object} 200 - {success, status, train: {...train, coach}}
+ * @RETURNS  {object} 404 - {message: 'Coach not found for the given ID: xyz'}
+ */
+module.exports.getCoach = asyncHandler(async (req, res, next) => {
+  let { id } = req.params;
+  id = mongoose.isValidObjectId(id) ? id : process.env.DEFAULT_COACH_ID;
+
+  const coach = await Coach.findById(id);
+  if (!coach) {
+    const message = `Coach not found for the given ID: ${id}`;
+    return next(new ErrorResponse(404, message));
+  }
+  const train = await Train.findById(coach.train);
+
+  return res.json({
+    success: true,
+    status: 200,
+    train: { ...train._doc, coach },
   });
 });
 
