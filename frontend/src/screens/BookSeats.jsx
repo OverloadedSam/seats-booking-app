@@ -49,7 +49,7 @@ const BookSeats = () => {
   useEffect(() => {
     if (isBooked) {
       toast.success(`Your ${seats} seat(s) has been booked!`);
-      navigate('/reservation-details');
+      navigate(`/reservation-details/${coachId}`);
     }
 
     if (bookingError) {
@@ -59,7 +59,6 @@ const BookSeats = () => {
   }, [isBooked, bookingError]);
 
   const bookSeats = () => {
-    console.log('Booking seats...');
     reserveSeats({ numberOfSeats: seats, userName, coachId });
   };
 

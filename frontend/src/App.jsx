@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import Home from './screens/Home';
 import BookSeats from './screens/BookSeats';
+import ReservationDetails from './screens/ReservationDetails';
 
 const App = () => {
   const theme = useMemo(() => createTheme(themeOptions), [themeOptions]);
@@ -23,6 +24,10 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/book-seats' element={<BookSeats />} />
+            <Route
+              path='/reservation-details/:id'
+              element={<ReservationDetails />}
+            />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
