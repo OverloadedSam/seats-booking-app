@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -19,24 +20,26 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
+  const navigate = useNavigate();
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+  const handleProfileMenuOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
 
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const navigateToReservationDetails = (e) => {
+    /* ASSUMPTION: Hardcoding coach id to keep things simple. */
+    const coachId = '63ca7bf0908544cdd2ed78df';
+    navigate(`/reservation-details/${coachId}`);
   };
 
   const menuId = 'primary-search-account-menu';
@@ -78,9 +81,9 @@ const Navbar = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem onClick={navigateToReservationDetails}>
         <IconButton size='large' aria-label='show 4 new mails' color='inherit'>
-          <Badge badgeContent={3} color='error'>
+          <Badge variant='dot' color='error'>
             <TrainIcon />
           </Badge>
         </IconButton>
@@ -115,10 +118,11 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography
+            onClick={() => navigate('/')}
             variant='h6'
             noWrap
             component='div'
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer' }}
           >
             Train Seats Reservation
           </Typography>
@@ -134,11 +138,12 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
+              onClick={navigateToReservationDetails}
               size='large'
               aria-label='show 4 new mails'
               color='inherit'
             >
-              <Badge badgeContent={3} color='error'>
+              <Badge variant='dot' color='error'>
                 <TrainIcon />
               </Badge>
             </IconButton>
