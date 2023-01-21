@@ -5,13 +5,23 @@ export const apiSlice = createApi({
     baseUrl: import.meta.env.VITE_BASE_URL,
   }),
   reducerPath: 'reservationApi',
-  tagTypes: ['Coach'],
+  tagTypes: ['Coach', 'Reservation'],
   endpoints: (build) => ({
     getTrainCoachDetails: build.query({
       query: (id) => `/coach/${id}`,
       providesTags: ['Coach'],
     }),
+
+    reserveSeats: build.mutation({
+      query: (payload) => ({
+        url: '/reserve-seats',
+        method: 'POST',
+        body: payload,
+      }),
+      providesTags: ['Reservation'],
+    }),
   }),
 });
 
-export const { useGetTrainCoachDetailsQuery } = apiSlice;
+export const { useGetTrainCoachDetailsQuery, useReserveSeatsMutation } =
+  apiSlice;
